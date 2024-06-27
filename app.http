@@ -1,0 +1,42 @@
+# Get all books
+GET http://localhost:5000/api/books
+Accept: application/json
+
+###
+
+# Get a single book by ID
+GET http://localhost:5000/api/books/1
+Accept: application/json
+
+###
+
+# Create a new book
+POST http://localhost:5000/api/books
+Content-Type: application/json
+
+{  
+   "id": 2,
+  "title": "The Great Gatsby",
+  "author": "F. Scott Fitzgerald",
+  "year": 1925
+}
+
+###
+
+# Update an existing book by ID
+PUT http://localhost:5000/api/books/1
+Content-Type: application/json
+
+{
+  "title": "The Great Gatsby (Updated)",
+  "author": "F. Scott Fitzgerald",
+  "year": 1926
+}
+
+###
+
+# Delete a book by ID
+DELETE http://localhost:500/api/books/1
+Accept: application/json
+
+###
