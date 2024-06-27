@@ -1,9 +1,4 @@
 "use strict";
-// // db.ts
-// import "dotenv/config";
-// import { drizzle } from "drizzle-orm/node-postgres";
-// import { Client } from "pg";
-// import * as schema from "./schema";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -31,16 +26,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-// console.log("DATABASE_URL:", process.env.DATABASE_URL); // Add this line to debug
-// export const client = new Client({
-//   connectionString: process.env.DATABASE_URL as string,
-// });
-// const main = async () => {
-//   await client.connect();
-// };
-// main();
-// const db = drizzle(client, { schema, logger: true });
-// export default db;
 require("dotenv/config");
 const serverless_1 = require("@neondatabase/serverless");
 const neon_http_1 = require("drizzle-orm/neon-http");
