@@ -1,4 +1,9 @@
 "use strict";
+// // db.ts
+// import "dotenv/config";
+// import { drizzle } from "drizzle-orm/node-postgres";
+// import { Client } from "pg";
+// import * as schema from "./schema";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -22,20 +27,26 @@ var __importStar = (this && this.__importStar) || function (mod) {
     __setModuleDefault(result, mod);
     return result;
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.client = void 0;
-// db.ts
-require("dotenv/config");
-const node_postgres_1 = require("drizzle-orm/node-postgres");
-const pg_1 = require("pg");
-const schema = __importStar(require("./schema"));
-console.log("DATABASE_URL:", process.env.DATABASE_URL); // Add this line to debug
-exports.client = new pg_1.Client({
-    connectionString: process.env.DATABASE_URL,
-});
-const main = async () => {
-    await exports.client.connect();
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-main();
-const db = (0, node_postgres_1.drizzle)(exports.client, { schema, logger: true });
+Object.defineProperty(exports, "__esModule", { value: true });
+// console.log("DATABASE_URL:", process.env.DATABASE_URL); // Add this line to debug
+// export const client = new Client({
+//   connectionString: process.env.DATABASE_URL as string,
+// });
+// const main = async () => {
+//   await client.connect();
+// };
+// main();
+// const db = drizzle(client, { schema, logger: true });
+// export default db;
+require("dotenv/config");
+const serverless_1 = require("@neondatabase/serverless");
+const neon_http_1 = require("drizzle-orm/neon-http");
+const schema = __importStar(require("./schema"));
+const assert_1 = __importDefault(require("assert"));
+(0, assert_1.default)(process.env.DATABASE_URL, "DATABASE_URL is not set in the .env file");
+const client = (0, serverless_1.neon)(process.env.DATABASE_URL);
+const db = (0, neon_http_1.drizzle)(client, { schema, logger: true }); //create a drizzle instance
 exports.default = db;
