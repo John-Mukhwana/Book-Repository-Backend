@@ -30,6 +30,7 @@ exports.getBook = getBook;
 const createBook = async (c) => {
     try {
         const book = await c.req.json();
+        console.log(book);
         const createdBook = await (0, Book_service_1.createBookService)(book);
         if (!createdBook)
             return c.text("Book not created", 404);

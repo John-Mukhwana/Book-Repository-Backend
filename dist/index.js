@@ -49,8 +49,10 @@ const trailing_slash_1 = require("hono/trailing-slash");
 const timeout_1 = require("hono/timeout");
 const http_exception_1 = require("hono/http-exception");
 const prometheus_1 = require("@hono/prometheus");
+const cors_1 = require("hono/cors");
 const Book_router_1 = require("./Book/Book.router");
 const app = new hono_1.Hono().basePath('/api');
+app.use('/*', (0, cors_1.cors)());
 const customTimeoutException = () => new http_exception_1.HTTPException(408, {
     message: `Request timeout after waiting for more than 10 seconds`,
 });

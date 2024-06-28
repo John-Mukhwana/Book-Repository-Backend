@@ -15,10 +15,10 @@ POST http://localhost:5000/api/books
 Content-Type: application/json
 
 {  
-   "id": 2,
-  "title": "The Great Gatsby",
-  "author": "F. Scott Fitzgerald",
-  "year": 1925
+   "id": 3,
+  "title": "The Blossoms Of Savannah",
+  "author": "Henry Ole Kulet",
+  "year": 2008
 }
 
 ###
