@@ -52,11 +52,12 @@ const prometheus_1 = require("@hono/prometheus");
 const cors_1 = require("hono/cors");
 const Book_router_1 = require("./Book/Book.router");
 const app = new hono_1.Hono().basePath('/api');
-app.use('/*', (0, cors_1.cors)());
-// app.use('/*', cors({
-//   origin: 'https://book-repository-backend-1.onrender.com', // Specify allowed origin
-//   credentials: true, // Allow cookies and authentication headers
-// }));
+// app.use('/*', cors())
+app.use('*', (0, cors_1.cors)({
+    origin: 'http://localhost:5174', // Your frontend URL
+    allowMethods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowHeaders: ['Content-Type', 'Authorization'],
+}));
 const customTimeoutException = () => new http_exception_1.HTTPException(408, {
     message: `Request timeout after waiting for more than 10 seconds`,
 });
